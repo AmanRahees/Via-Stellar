@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViaStellar</title>
+    <title>Home</title>
 
     {% load static %}
 
@@ -16,22 +16,47 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
     
-    {% block content %}
-    <div class="container">
-        <a class="btn btn-success float-end mt-3" href="{% url 'UserLogin' %}">Login</a>
-    </div>
-    {% endblock %}
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 25%; height: 800px;">
+        <div class="text-white text-decoration-none">
+            <img src="https://github.com/AmanRahees.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong class="text-capitalize">{{ user.username }}</strong>
+            <a href="" class="text-secondary text-decoration-none float-end"><i class="fa-solid fa-gear stg"></i></a>
+        </div>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            
+          <li class="nav-item">
+            <a href="#" class="nav-link text-light p-3 w-100">
+              Home
+            </a>
+          </li>
 
+        </ul>
+      </div>
 
-    <!-- Bootstrap JS -->
+      {% block content %}
+
+      {% endblock %}
+
+      <!-- Bootstrap JS -->
     <script src="{% static 'Bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'Bootstrap/js/jquery.min.js' %}"></script>
     <script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+
+    <script>
+        (function () {
+  'use strict'
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+    new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+})()
+    </script>
 
 </body>
 </html>

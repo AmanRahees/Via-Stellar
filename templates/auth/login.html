@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
+<body style="background-image: url('{% static 'images/main.png' %}');">
     
     <h1><i class="fa fa-comments fa-lg"></i> Via-Stellar</h1>
     <form action="" method="post">
@@ -27,8 +27,8 @@
         {% endfor %}
       
       <div class="row">
-        <label>Email</label>
-        <input type="email" name="email">
+        <label>Username</label>
+        <input type="text" name="username">
       </div>
       <div class="row">
         <label>Password</label>

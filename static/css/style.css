@@ -2,3 +2,10 @@
     margin: 0;
 }
 
+.stg{
+    transition: color 0.3s;
+}
+
+.stg:hover {
+    color: white;
+}

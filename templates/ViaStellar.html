@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViaStellar</title>
+
+    {% load static %}
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap-grid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap-reboot.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    
+    <div class="container">
+        <a class="btn btn-success float-end mt-3" href="{% url 'UserLogin' %}">Login</a>
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'Bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/jquery.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+
+</body>
+</html>
