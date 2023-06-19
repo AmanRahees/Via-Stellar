@@ -1,7 +1,101 @@
 {% extends 'home.html' %}
 
+{% load static %}
+
 {% block content %}
 
-Settings
+<style>
+    input.custom-input {
+      border: none;
+      background: none;
+      padding: 0;
+      font: inherit;
+      color: inherit;
+      outline: none;
+      cursor: text;
+      border-bottom: 1px solid #ddd; 
+    }
+    label{
+        color: #b1a7a7;
+    }
+    .hidden {
+        display: none;
+    }
+  </style>
+
+<div class="content border-left border-dark" style="background: #44617e;">
+    <div class="container mt-2">
+      <div class="d-flex justify-content-end">
+        <a type="button" data-bs-toggle="modal" data-bs-target="#LogoutModal" class="text-decoration-none btn btn-sm btn-danger">
+            <i class="fa-solid fa-power-off"></i>
+        </a>
+    </div>
+        <div class="container d-flex justify-content-center">
+            <img src="{% static 'images/default.png' %}" width="150px" class="rounded-circle border border-dark">
+        </div>
+        <p class="text-center" style="position: relative; bottom: 35px; left: 45px;">
+          <a data-bs-toggle="modal" data-bs-target="#DpModal" class="bg-dark p-2 rounded-circle"><i class="fa-solid fa-camera text-light"></i></a>
+        </p>
+        <div class="container d-flex justify-content-center">
+            <form method="post">
+                {% csrf_token %}
+                <div class="container">
+                  <label>Username:</label><br>
+                  <span class="text-light">{{user.username}}</span>
+                </div>
+                <div class="container mt-3">
+                  <label>Name:</label><br>
+                  <input name="profile_name" value="{{ user_pfn }}" disabled class="custom-input text-light" id="username-input">
+                  <a href="#" class="ml-3 float-right text-decoration-none text-light edit-icon"><i class="fa-solid fa-pen"></i></a>
+                </div>
+                <div class="container mt-3">
+                  <label>About:</label><br>
+                  <input name="about" value="{{ user_abt }}" disabled class="custom-input text-light" id="about-input">
+                  <a href="#" class="ml-3 float-right text-decoration-none text-light edit-icon"><i class="fa-solid fa-pen"></i></a>
+                </div>
+                <div class="container mt-3 text-right" id="save-button-container">
+                  <button type="submit" class="btn btn-success hidden" id="save-button">Save</button>
+                </div>
+              </form>
+          </div>
+    </div>
+</div>
+
+<div class="modal fade" id="LogoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h5 class="modal-title text-light" id="exampleModalLabel">Logout</h5>
+        </div>
+        <div class="modal-body text-light">
+          Are you sure you want to Logout?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+          <a href="{% url 'UserLogout' %}" type="button" class="btn btn-danger">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="DpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h5 class="modal-title text-light" id="exampleModalLabel">Profile Picture</h5>
+        </div>
+        <div class="modal-body text-light">
+          <input type="file" name="prfile_pic">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+          <a href="{% url 'UserLogout' %}" type="button" class="btn btn-danger">Save</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{% static 'js/settings.js' %}"></script>
 
 {% endblock %}

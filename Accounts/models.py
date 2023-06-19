@@ -4,12 +4,16 @@ from django.contrib.auth.models import User
 
 class User_Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(upload_to='profiles/',default='profiles/default.png')
-    about = models.CharField(max_length=200, default='Available')
+    profile_name = models.CharField(max_length=20)
+    about = models.CharField(max_length=200, default='Available', null=True)
     status = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.user
+    
+class Profile_pic(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    picture = models.ImageField(upload_to='profiles/', null=True)
 
 class Friends(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_friends')

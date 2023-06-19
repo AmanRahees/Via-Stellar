@@ -20,3 +20,6 @@ def UserLogin(request):
         else:
             return render(request, 'auth/login.html')
         
+def UserLogout(request):
+    logout(request)
+    return redirect('UserLogin')
