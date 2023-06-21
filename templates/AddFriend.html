@@ -1,0 +1,24 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<div class="content" style="background-color: #44617e;">
+    <div class="m-4">
+        <div class="input-container">
+            <input placeholder="Search Friends" class="input-field" type="text">
+        </div>
+        <div class="container">
+        {% for i, j in users %}
+        <div class="p-3 d-flex justify-content-between" style="background: #32465a; color: #fff;">
+            <div>
+                <img src="{{ j.picture.url }}" width="40px" height="40px" class="rounded-circle">
+                <span>{{ i.profile_name }}</span>
+            </div>
+            <a href="#" class="m-2"><i class="fa fa-user-plus fa-fw text-light"></i></a>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

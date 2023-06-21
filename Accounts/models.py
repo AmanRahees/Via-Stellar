@@ -12,7 +12,7 @@ class User_Profile(models.Model):
         return self.user
     
 class Profile_pic(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_pic')
     picture = models.ImageField(upload_to='profiles/', null=True)
 
 class Friends(models.Model):

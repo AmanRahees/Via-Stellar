@@ -31,7 +31,11 @@
         </a>
     </div>
         <div class="container d-flex justify-content-center">
+          {% if user_pic == None %}
             <img src="{% static 'images/default.png' %}" width="150px" class="rounded-circle border border-dark">
+          {% else %}
+          <img src="{{ user_pic.url }}" width="150px" height="150px" class="rounded-circle border border-dark">
+          {% endif %}
         </div>
         <p class="text-center" style="position: relative; bottom: 35px; left: 45px;">
           <a data-bs-toggle="modal" data-bs-target="#DpModal" class="bg-dark p-2 rounded-circle"><i class="fa-solid fa-camera text-light"></i></a>
@@ -84,13 +88,16 @@
         <div class="modal-header">
           <h5 class="modal-title text-light" id="exampleModalLabel">Profile Picture</h5>
         </div>
+        <form method="post" action="{% url 'pic_update' %}"  enctype="multipart/form-data">
         <div class="modal-body text-light">
-          <input type="file" name="prfile_pic">
+            {% csrf_token %}
+            <input type="file" name="picture">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
-          <a href="{% url 'UserLogout' %}" type="button" class="btn btn-danger">Save</a>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-success" type="submit">Save</button>
         </div>
+        </form>
       </div>
     </div>
   </div>

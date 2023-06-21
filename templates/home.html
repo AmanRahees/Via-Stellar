@@ -22,7 +22,11 @@
     <div id="sidepanel">
       <div id="profile">
         <div class="wrap">
-          <img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
+          {% if user_pic == None %}
+          <img id="profile-img" src="{% static 'images/default.png' %}" class="online"/>
+          {% else %}
+          <img id="profile-img" src="{{user_pic.url}}" class="online" style="width: 50px; height: 50px;"/>
+          {% endif %}
           <p class="text-capitalize">{{ user_pfn }}</p>
         </div>
       </div>
@@ -53,7 +57,9 @@
         </ul>
       </div>
       <div id="bottom-bar">
-        <button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add Friends</span></button>
+        <a href="{% url 'AddFriends' %}" class="text-decoration-none text-light"><button id="settings">
+          <i class="fa fa-user-plus fa-fw"></i> <span>Add Friends</span>
+        </button></a>
         <a href="{% url 'settings' %}" class="text-decoration-none text-light"><button id="settings">
           <i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span>
         </button></a>

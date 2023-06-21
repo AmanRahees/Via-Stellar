@@ -4,6 +4,7 @@ from .models import *
 # Register your models here.
 
 admin.site.register(User_Profile)
+admin.site.register(Profile_pic)
 admin.site.register(Friends)
 admin.site.register(Message)
 admin.site.register(Media)

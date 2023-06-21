@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from Accounts.models import *
 
@@ -8,14 +8,7 @@ def Via_page(request):
     return render(request, 'ViaStellar.html')
 
 def home(request):
-    user = User_Profile.objects.get(user=request.user.id)
-    user_pfn = user.profile_name
-    user_abt = user.about
-    context = {
-        'user_pfn': user_pfn,
-        'user_abt': user_abt,
-    }
-    return render(request, 'home.html', context)
+    return render(request, 'home.html')
 
 def settings(request):
     user = User_Profile.objects.get(user=request.user.id)
@@ -32,13 +25,29 @@ def settings(request):
         elif profile_name == None and about != None:
             user.about = about
             user.save()
-    user_pfn = user.profile_name
-    user_abt = user.about
+    return render(request, 'settings.html')
+
+def change_picture(request):
+    try:
+        user = Profile_pic.objects.get(user=request.user.id)
+    except:
+        user = Profile_pic(user=request.user)
+    if request.method == 'POST':
+        picture = request.FILES.get('picture')
+        if picture:
+            user.picture = picture
+            print(picture)
+            user.save()
+        return redirect('settings')
+
+def AddFriends(request):
+    users = User_Profile.objects.filter(status=False).exclude(user=request.user)
+    dp = Profile_pic.objects.all().order_by('user')
+    users_details = zip(users, dp)
     context = {
-        'user_pfn': user_pfn,
-        'user_abt': user_abt,
+        'users': users_details,
     }
-    return render(request, 'settings.html', context)
+    return render(request, 'AddFriend.html', context)
 
 def chats(request):
     return render(request, 'chat.html')
