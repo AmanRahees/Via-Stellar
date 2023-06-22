@@ -18,6 +18,9 @@ class Profile_pic(models.Model):
 class Friends(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_friends')
     friend = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_friends_with')
+    frnd_requests = models.TextField(null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    is_accepted  = models.BooleanField(default=False)
 
 class Message(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_messages')

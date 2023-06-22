@@ -42,7 +42,7 @@ def change_picture(request):
 
 def AddFriends(request):
     users = User_Profile.objects.filter(status=False).exclude(user=request.user)
-    dp = Profile_pic.objects.all().order_by('user')
+    dp = Profile_pic.objects.all().order_by('user').exclude(user=request.user)
     users_details = zip(users, dp)
     context = {
         'users': users_details,

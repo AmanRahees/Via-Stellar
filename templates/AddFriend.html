@@ -2,19 +2,38 @@
 
 {% block content %}
 
+<style>
+    .container {
+      height: 300px;
+      overflow: scroll;
+    }
+    
+    .container::-webkit-scrollbar {
+      width: 0;
+    }
+    
+    .container::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    
+    .container::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
+    </style>
+
 <div class="content" style="background-color: #44617e;">
     <div class="m-4">
         <div class="input-container">
             <input placeholder="Search Friends" class="input-field" type="text">
         </div>
-        <div class="container">
+        <div class="container" style="height: 400px;">
         {% for i, j in users %}
-        <div class="p-3 d-flex justify-content-between" style="background: #32465a; color: #fff;">
+        <div class="p-3 d-flex justify-content-between mb-1" style="background: #32465a; color: #fff;">
             <div>
                 <img src="{{ j.picture.url }}" width="40px" height="40px" class="rounded-circle">
                 <span>{{ i.profile_name }}</span>
             </div>
-            <a href="#" class="m-2"><i class="fa fa-user-plus fa-fw text-light"></i></a>
+            <a href="{% url 'friendRequest' i.id %}" class="m-2"><i class="fa fa-user-plus fa-fw text-light"></i></a>
         </div>
         {% endfor %}
         </div>
