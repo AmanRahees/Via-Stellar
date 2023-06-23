@@ -46,6 +46,7 @@ def AddFriends(request):
     users_details = zip(users, dp)
     context = {
         'users': users_details,
+        'dp':dp
     }
     return render(request, 'AddFriend.html', context)
 
